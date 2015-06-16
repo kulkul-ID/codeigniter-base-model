@@ -811,13 +811,10 @@ class MY_Model extends CI_Model
 
         if(!empty($this->validate))
         {
-            foreach($data as $key => $val)
-            {
-                $_POST[$key] = $val;
-            }
-
             $this->load->library('form_validation');
-
+	
+	    $this->form_validation->set_data($data);
+	
             if(is_array($this->validate))
             {
                 $this->form_validation->set_rules($this->validate);
